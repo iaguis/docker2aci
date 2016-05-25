@@ -142,7 +142,7 @@ func convertReal(backend internal.Docker2ACIBackend, dockerURL string, squash bo
 			return nil, fmt.Errorf("error inserting in the conversion store: %v", err)
 		}
 
-		images = append(images, acirenderer.Image{Im: aciManifests[i], Key: key, Level: uint16(i)})
+		images = append(images, acirenderer.Image{Im: aciManifests[i], Key: key, Level: uint16(len(aciLayerPaths) - 1 - i)})
 	}
 
 	// acirenderer expects images in order from upper to base layer
